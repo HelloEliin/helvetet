@@ -1,0 +1,162 @@
+using System;
+
+namespace Läxa
+{
+    class Program
+
+    {
+
+
+
+        static string[] courses = { "Math", "Swedish", "English", "History", "Chemistry" };
+        static int[] points = new int[5];
+        static char[] grades = new char[6];    
+
+        static void Main(string[] args)
+        {
+
+
+
+            Console.WriteLine("Hello. Please enter your points below. Only 0-100.");
+            ReadPoints();
+
+            PointToGrades();   // Calling the different methods
+
+            printOutGrades();
+
+            Statics();
+
+
+
+        }
+
+        static void ReadPoints()
+        {
+
+           
+
+            Console.WriteLine("Points for: Math:");      // This method reads points for every course and stores it
+            points[0] = int.Parse(Console.ReadLine());   //in the Points-array.
+
+            Console.WriteLine("Points for: English:");
+            points[1] = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Points for: Swedish:");
+            points[2] = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Points for: History:");
+            points[3] = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Points for: Chemistry:");
+            points[4] = int.Parse(Console.ReadLine());
+
+        }
+
+        static void PointToGrades()
+        {
+
+            for (int i = 0; i < points.Length; i++)    // This method converts all the points to grades.
+            {
+
+
+                if (points[i] == 100)       // 100 points is an A and so on.
+                {
+
+                    grades[i] = 'A';
+
+                }
+
+                else if (points[i] >= 80)
+                {
+                    grades[i] = 'B';
+
+                }
+                else if (points[i] >= 75)
+                {
+                    grades[i] = 'C';
+
+                }
+                else if (points[i] >= 70)
+                {
+                    grades[i] = 'D';
+
+                }
+                else if (points[i] >= 50)
+                {
+                    grades[i] = 'E';
+
+                }
+                else if (points[i] <= 0)
+                {
+                    grades[i] = 'F';
+
+                }
+
+            }
+
+
+        }
+
+        static void printOutGrades()
+        {                              // This method prints out course + the grade for the acutal course.
+
+            Console.WriteLine("Your grade in " + courses[0] + " is " + grades[0]);
+            Console.WriteLine("Your grade in " + courses[1] + " is " + grades[1]);
+            Console.WriteLine("Your grade in " + courses[2] + " is " + grades[2]);
+            Console.WriteLine("Your grade in " + courses[3] + " is " + grades[3]);
+            Console.WriteLine("Your grade in " + courses[4] + " is " + grades[4]);
+
+        }
+
+        static void Statics()
+        {
+
+            int totalA = 0;
+            int totalC = 0;     // This method checks to see how many A,C or F's thats in the grades-array
+            int totalF = 0;    // and stores the sum in the new variables.
+            
+
+            for (int i = 0; i < grades.Length; i++)
+            {
+                if (grades[i] == 'A')
+                {
+
+                    totalA++;
+
+                }
+
+                else if (grades[i] == 'C')
+                {
+                    totalC++;
+
+                }
+
+                else if (grades[i] == 'F')
+                {
+                    totalF++;
+
+                }
+
+
+            }
+
+
+            int sum = 0;
+            for (int i = 0; i < points.Length; i++)   // Sums up all the points in the points-array.
+            {
+                sum = sum + points[i];
+
+            }
+
+            Console.WriteLine("You have " + totalA + " A's.");
+            Console.WriteLine("You have " + totalC + " C's.");     // Prints out the statics.
+            Console.WriteLine("You have " + totalF + " F's.");
+            Console.WriteLine("Your total points is: " + sum);
+
+
+        }
+
+
+
+    }
+}
